@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2F3C2C">
+<meta name="description" content="Forest Nomad kitchen SOPs — Cafe — Forest Nomad SOPs">
+<title>Cafe — Forest Nomad SOPs</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Noto+Sans+Devanagari:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+
+    body { margin: 0; }
+    a { color: #44403c; }
+    .wrap {
+      height: 100vh; box-sizing: border-box; overflow: hidden;
+      background: #ffffff; padding: 12px 14px 14px;
+      display: flex; flex-direction: column; gap: 9px;
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
+      color: #1c1917;
+    }
+    .topline { flex: 0 0 auto; display: flex; align-items: center; gap: 14px; }
+    .topline h1 { margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+    .count { font-size: 12px; font-weight: 600; color: #57534e; }
+    .flagbar { display: flex; height: 6px; border-radius: 999px; overflow: hidden; flex: 0 0 auto; }
+    .flagbar span { flex: 1; }
+    .logo { width: 46px; flex: 0 0 auto; display: block; margin-left: 10px; color: #2F3C2C; }
+    .logo svg { width: 100%; height: auto; display: block; }
+    .back {
+      display: inline-flex; align-items: center; gap: 7px; height: 32px;
+      padding: 0 15px; border-radius: 999px; text-decoration: none;
+      background: #1F4FA6; color: #ffffff; border: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 0 #143869, 0 6px 9px rgba(28,25,23,0.2);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+      transition: transform 90ms ease, box-shadow 90ms ease;
+    }
+    .back:active { transform: translateY(4px); box-shadow: inset 0 2px 3px rgba(0,0,0,0.3), 0 0 0 #143869; }
+    .back:focus-visible { outline: 2px solid #1c1917; outline-offset: 3px; }
+    .lang {
+      margin-left: auto; display: inline-flex; align-items: center; height: 32px;
+      padding: 0 18px; border-radius: 999px; cursor: pointer; border: none; font-family: inherit;
+      background: #1c1917; color: #ffffff;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 0 #000000, 0 6px 9px rgba(28,25,23,0.2);
+      font-size: 13px; font-weight: 700;
+      transition: transform 90ms ease, box-shadow 90ms ease;
+    }
+    .lang:active { transform: translateY(4px); box-shadow: inset 0 2px 3px rgba(0,0,0,0.35), 0 0 0 #000000; }
+    .lang:focus-visible { outline: 2px solid #1c1917; outline-offset: 3px; }
+
+    .cols { flex: 1; min-height: 0; display: flex; gap: 7px; }
+    .col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+    .grp {
+      margin: 0 0 8px; font-size: 10.5px; font-weight: 800; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--ink);
+      padding-bottom: 4px; border-bottom: 2.5px solid var(--deep);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .item {
+      display: flex; align-items: center; width: 100%; box-sizing: border-box;
+      height: 32px; overflow: hidden; text-decoration: none; border: none;
+      padding: 0 10px; margin: 0 0 8px; text-align: left; cursor: pointer;
+      border-radius: 9px; font-family: inherit;
+      font-size: 13px; font-weight: 700; line-height: 1.05; letter-spacing: -0.012em;
+      color: var(--on);
+      background: linear-gradient(180deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0) 55%), var(--deep);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.32), 0 4px 0 var(--edge), 0 5px 9px rgba(28,25,23,0.18);
+      transition: transform 90ms ease, box-shadow 90ms ease, filter 90ms ease;
+    }
+    .item:last-child { margin-bottom: 0; }
+    .item:active {
+      transform: translateY(4px); filter: brightness(0.9);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.28), 0 0 0 var(--edge);
+    }
+    .item:focus-visible { outline: 2px solid #1c1917; outline-offset: 2px; }
+
+    @media (hover: hover) {
+      .item:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: inset 0 1px 0 rgba(255,255,255,0.32), 0 6px 0 var(--edge), 0 10px 15px rgba(28,25,23,0.24); }
+      .back:hover, .lang:hover { filter: brightness(1.18); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .item, .back, .lang { transition: none; }
+      .item:hover, .item:active, .back:active, .lang:active { transform: none; }
+    }
+  
+
+    /* the artboards are drawn for a 1152x720 tablet in landscape; on anything
+       shorter or narrower let the page scroll instead of clipping its content */
+    @media (max-width: 900px), (max-height: 560px) {
+      html, body { overflow-y: auto; }
+      .wrap { height: auto; min-height: 100vh; overflow: visible; }
+      .cols { overflow: visible; }
+    }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+</style>
+</head>
+<body>
+<div id="app"></div>
+<template id="tpl">
+<div class="wrap">
+
+  <div class="topline">
+    <a class="back" href="index.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12H4m0 0 6-6m-6 6 6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>BACK</a>
+    <h1>{{ title }}</h1>
+    <span class="count">{{ count }}</span>
+    <button type="button" class="lang" data-dc-click="flip">{{ langLabel }}</button>
+    <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 467 354" role="img" aria-label="Forest Nomad"><path fill="currentColor" fill-rule="evenodd" d="M74.0 5.5L67.0 8.5L59.0 14.5L53.5 21.0L49.5 30.0L49.5 48.0L50.5 49.0L50.5 111.0L51.5 112.0L51.5 121.0L52.5 122.0L52.5 205.0L53.5 206.0L53.5 213.0L54.5 214.0L54.5 219.0L55.5 220.0L55.5 294.0L56.5 295.0L56.5 305.0L57.5 306.0L57.5 312.0L58.5 313.0L59.5 322.0L61.5 325.0L61.5 327.0L65.5 333.0L73.0 339.5L79.0 342.5L81.0 342.5L82.0 343.5L90.0 343.5L91.0 342.5L93.0 342.5L99.0 339.5L107.5 331.0L110.5 325.0L111.5 318.0L112.5 317.0L112.5 311.0L111.5 310.0L111.5 304.0L110.5 303.0L111.5 288.0L110.5 287.0L110.5 281.0L109.5 280.0L109.5 244.0L108.5 243.0L108.5 206.0L107.5 205.0L107.5 183.0L106.5 182.0L106.5 174.0L105.5 173.0L105.5 113.0L102.5 113.0L103.0 107.5L121.0 118.5L175.0 171.5L183.0 176.5L200.0 193.5L207.0 198.5L210.0 199.5L216.0 206.5L223.0 211.5L234.0 222.5L240.0 225.5L251.0 225.5L252.0 224.5L254.0 224.5L257.0 222.5L273.0 205.5L274.0 205.5L281.0 198.5L282.0 198.5L292.5 187.0L296.5 181.0L310.5 167.0L312.5 162.0L316.5 158.0L316.5 157.0L340.5 130.0L346.5 121.0L352.0 115.5L352.5 128.0L353.5 129.0L353.5 136.0L354.5 137.0L353.5 139.0L353.5 146.0L352.5 147.0L352.5 171.0L353.5 172.0L353.5 178.0L354.5 179.0L354.5 185.0L353.5 186.0L353.5 207.0L354.5 208.0L354.5 218.0L355.5 219.0L355.5 248.0L356.5 249.0L356.5 274.0L357.5 275.0L356.5 287.0L355.5 288.0L356.5 315.0L357.5 316.0L357.5 319.0L358.5 320.0L358.5 323.0L359.5 324.0L360.5 329.0L363.5 334.0L372.0 342.5L379.0 346.5L382.0 346.5L383.0 347.5L393.0 346.5L401.0 342.5L409.5 333.0L412.5 325.0L412.5 283.0L411.5 282.0L411.5 275.0L410.5 274.0L410.5 198.0L409.5 197.0L409.5 190.0L408.5 189.0L408.5 101.0L409.5 100.0L410.5 56.0L417.5 40.0L417.5 26.0L413.5 16.0L406.0 9.5L404.0 9.5L403.0 8.5L392.0 8.5L380.0 14.5L376.0 17.5L368.5 25.0L363.5 34.0L330.0 68.5L324.0 72.5L317.5 79.0L317.5 80.0L301.5 98.0L301.5 99.0L291.5 109.0L291.5 110.0L269.5 136.0L269.5 137.0L263.5 143.0L263.5 144.0L251.0 155.5L248.0 156.5L226.0 137.5L221.0 134.5L202.0 115.5L201.0 115.5L185.0 99.5L184.0 99.5L176.0 91.5L175.0 91.5L146.0 63.5L132.0 53.5L122.0 44.5L121.0 44.5L113.0 36.5L112.0 36.5L103.5 28.0L95.5 16.0L89.0 8.5L83.0 5.5L75.0 5.5Z"/><circle cx="23.0" cy="114.5" r="16.2" fill="#1F4FA6"/><circle cx="143.5" cy="191.5" r="16.0" fill="#FFFFFF" stroke="currentColor" stroke-width="2.4" stroke-opacity=".55"/><circle cx="239.0" cy="98.5" r="16.2" fill="#C01B2E"/><circle cx="328.0" cy="187.5" r="16.2" fill="#137A3C"/><circle cx="444.5" cy="122.5" r="16.0" fill="#E8B007"/></svg></div>
+  </div>
+
+  <div class="flagbar">
+    <span style="background:#1F4FA6"></span><span style="background:#ffffff;box-shadow:inset 0 0 0 1px #e7e5e4"></span><span style="background:#C01B2E"></span><span style="background:#137A3C"></span><span style="background:#E8B007"></span>
+  </div>
+
+  <div class="cols">
+
+    <div class="col">
+      <div style="--deep:#C01B2E; --edge:#85121F; --on:#ffffff; --ink:#C01B2E">
+        <h2 class="grp">{{ g1 }}</h2>
+        <a class="item" href="SOP_CF_CafeLatte.html">Cafe Latte</a>
+        <a class="item" href="SOP_CF_VanillaLatte.html">Vanilla Latte</a>
+        <a class="item" href="SOP_CF_CaramelLatte.html">Caramel Latte</a>
+        <a class="item" href="SOP_CF_SpanishLatteHot.html">Spanish Latte</a>
+        <a class="item" href="SOP_CF_Cappuccino.html">Cappuccino</a>
+        <a class="item" href="SOP_CF_Americano.html">Americano</a>
+        <a class="item" href="SOP_CF_Espresso.html">Espresso</a>
+        <a class="item" href="SOP_CF_HazelnutCortado.html">Hazelnut Cortado</a>
+        <a class="item" href="SOP_CF_Affogato.html">Affogato</a>
+      </div>
+      <div style="--deep:#E8B007; --edge:#A37B00; --on:#1c1917; --ink:#7A5C00">
+        <h2 class="grp">{{ g2 }}</h2>
+        <a class="item" href="SOP_CF_HotChocClassic.html">Classic</a>
+        <a class="item" href="SOP_CF_HotChocDark.html">Dark 65%</a>
+        <a class="item" href="SOP_CF_HotChocHazelnut.html">Hazelnut</a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="--deep:#1F4FA6; --edge:#143869; --on:#ffffff; --ink:#1F4FA6">
+        <h2 class="grp">{{ g3 }}</h2>
+        <a class="item" href="SOP_CF_ColdBrewClassic.html">Classic Cold Brew</a>
+        <a class="item" href="SOP_CF_SweetCreamColdBrew.html">Sweet Cream</a>
+        <a class="item" href="SOP_CF_OrangeColdBrewFizz.html">Orange Fizz</a>
+        <a class="item" href="SOP_CF_CoconutColdBrew.html">Coconut Cold Brew</a>
+        <a class="item" href="SOP_CF_HoneyV60.html">Honey-Process V60</a>
+        <a class="item" href="SOP_CF_JapaneseIcedV60.html">Japanese Iced V60</a>
+        <a class="item" href="SOP_CF_V60SingleOrigin.html">V60 Single Origin</a>
+        <a class="item" href="SOP_CF_FrenchPress.html">French Press</a>
+        <a class="item" href="SOP_CF_AeroPress.html">AeroPress</a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="--deep:#1F4FA6; --edge:#143869; --on:#ffffff; --ink:#1F4FA6">
+        <h2 class="grp">{{ g4 }}</h2>
+        <a class="item" href="SOP_CF_SaltedCaramelIced.html">Salted Caramel</a>
+        <a class="item" href="SOP_CF_BrownButterIced.html">Brown Butter</a>
+        <a class="item" href="SOP_CF_CoconutIced.html">Coconut</a>
+        <a class="item" href="SOP_CF_SpanishIced.html">Spanish</a>
+        <a class="item" href="SOP_CF_HazelnutIced.html">Hazelnut</a>
+        <a class="item" href="SOP_CF_ClassicIced.html">Classic</a>
+      </div>
+      <div style="--deep:#137A3C; --edge:#0C5227; --on:#ffffff; --ink:#137A3C">
+        <h2 class="grp">{{ g5 }}</h2>
+        <a class="item" href="SOP_CF_BlueberryMatcha.html">Blueberry</a>
+        <a class="item" href="SOP_CF_StrawberryMatcha.html">Strawberry</a>
+        <a class="item" href="SOP_CF_CoconutMatcha.html">Coconut (Vegan)</a>
+        <a class="item" href="SOP_CF_MangoMatcha.html">Mango (Seasonal)</a>
+        <a class="item" href="SOP_CF_CoconutMangoMatcha.html">Coconut Mango</a>
+        <a class="item" href="SOP_CF_HotMatcha.html">Hot Matcha Latte</a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="--deep:#E8B007; --edge:#A37B00; --on:#1c1917; --ink:#7A5C00">
+        <h2 class="grp">{{ g6 }}</h2>
+        <a class="item" href="SOP_CF_FrappeClassic.html">Classic</a>
+        <a class="item" href="SOP_CF_FrappeIrish.html">Irish Cream</a>
+        <a class="item" href="SOP_CF_FrappeHazelnut.html">Hazelnut Chocolate</a>
+        <a class="item" href="SOP_CF_FrappeBiscoff.html">Biscoff</a>
+        <a class="item" href="SOP_CF_FrappePeanut.html">Peanut Butter</a>
+        <a class="item" href="SOP_CF_FrappeDoubleChoc.html">Double Choc Chip</a>
+        <a class="item" href="SOP_CF_FrappeCaramel.html">Caramel</a>
+      </div>
+      <div style="--deep:#137A3C; --edge:#0C5227; --on:#ffffff; --ink:#137A3C">
+        <h2 class="grp">{{ g7 }}</h2>
+        <a class="item" href="SOP_CF_KadakChai.html">Kadak Chai</a>
+        <a class="item" href="SOP_CF_LemonHoneyGinger.html">Lemon Honey Ginger</a>
+        <a class="item" href="SOP_CF_TandooriChai.html">Tandoori Chai</a>
+        <a class="item" href="SOP_CF_KashmiriKahwa.html">Kashmiri Kahwa</a>
+        <a class="item" href="SOP_CF_IcedLemonTea.html">Iced Lemon Tea</a>
+        <a class="item" href="SOP_CF_IcedPeachTea.html">Iced Peach Tea</a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="--deep:#C01B2E; --edge:#85121F; --on:#ffffff; --ink:#C01B2E">
+        <h2 class="grp">{{ g8 }}</h2>
+        <a class="item" href="SOP_CF_VanillaShake.html">Vanilla Shake</a>
+        <a class="item" href="SOP_CF_HazelnutShake.html">Hazelnut Choc Shake</a>
+        <a class="item" href="SOP_CF_BiscoffShake.html">Biscoff Shake</a>
+        <a class="item" href="SOP_CF_PeanutShake.html">Peanut Butter Shake</a>
+        <a class="item" href="SOP_CF_DryFruitShake.html">Dry Fruit Shake</a>
+        <a class="item" href="SOP_CF_Shikanji.html">Masala Shikanji</a>
+        <a class="item" href="SOP_CF_PineappleLemonade.html">Pineapple Lemonade</a>
+        <a class="item" href="SOP_CF_WatermelonLime.html">Watermelon Lime</a>
+        <a class="item" href="SOP_CF_PeachSabja.html">Peach &amp; Sabja</a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="--deep:#E8B007; --edge:#A37B00; --on:#1c1917; --ink:#7A5C00">
+        <h2 class="grp">{{ g9 }}</h2>
+        <a class="item" href="SOP_CF_BombayVegCheese.html">Bombay Veg Cheese</a>
+        <a class="item" href="SOP_CF_GarlicChutneyCheese.html">Garlic Chutney Cheese</a>
+        <a class="item" href="SOP_CF_PeriPeriCorn.html">Peri Peri Corn</a>
+        <a class="item" href="SOP_CF_PestoPaneerSandwich.html">Pesto Paneer</a>
+        <a class="item" href="SOP_CF_PaneerPita.html">Paneer Pita Pocket</a>
+        <a class="item" href="SOP_CF_AsliBombay.html">Asli Bombay</a>
+        <a class="item" href="SOP_CF_WhiteCreamyPaneer.html">White Creamy Paneer</a>
+        <a class="item" href="SOP_CF_SuratVegCheese.html">Surat Veg Cheese</a>
+        <a class="item" href="SOP_CF_CheeseGarlicToast.html">Cheese Garlic Toast</a>
+        <a class="item" href="SOP_CF_AvocadoSalsaToast.html">Avocado Salsa Toast</a>
+        <a class="item" href="SOP_CF_AvocadoThechaToast.html">Avocado Thecha Toast</a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="--deep:#C01B2E; --edge:#85121F; --on:#ffffff; --ink:#C01B2E">
+        <h2 class="grp">{{ g10 }}</h2>
+        <a class="item" href="SOP_CF_MargheritaClassic.html">Margherita Classic</a>
+        <a class="item" href="SOP_CF_MargheritaThin.html">Margherita Thin</a>
+        <a class="item" href="SOP_CF_FarmFreshClassic.html">Farm Fresh Classic</a>
+        <a class="item" href="SOP_CF_FarmFreshThin.html">Farm Fresh Thin</a>
+        <a class="item" href="SOP_CF_PestoPaneerClassic.html">Pesto Paneer Classic</a>
+        <a class="item" href="SOP_CF_PestoPaneerThin.html">Pesto Paneer Thin</a>
+      </div>
+      <div style="--deep:#1F4FA6; --edge:#143869; --on:#ffffff; --ink:#1F4FA6">
+        <h2 class="grp">{{ g11 }}</h2>
+        <a class="item" href="SOP_CF_Arrabbiata.html">Arrabbiata Basil</a>
+        <a class="item" href="SOP_CF_Alfredo.html">Alfredo Cream</a>
+        <a class="item" href="SOP_CF_CreamyPesto.html">Creamy Pesto</a>
+        <a class="item" href="SOP_CF_GochujangBurger.html">Korean Gochujang</a>
+        <a class="item" href="SOP_CF_VegBurger.html">Grilled Mixed Veg</a>
+        <a class="item" href="SOP_CF_GarlicBread.html">Garlic Bread</a>
+        <a class="item" href="SOP_CF_CheeseGarlicBread.html">Cheese Garlic Bread</a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="--deep:#137A3C; --edge:#0C5227; --on:#ffffff; --ink:#137A3C">
+        <h2 class="grp">{{ g12 }}</h2>
+        <a class="item" href="SOP_CF_ProteinBowl.html">Nomad High-Protein</a>
+        <a class="item" href="SOP_CF_TandooriPaneerSalad.html">Tandoori Paneer</a>
+        <a class="item" href="SOP_CF_PeriPeriSalad.html">Peri Peri Sprout</a>
+        <a class="item" href="SOP_CF_RajmaChaatSalad.html">Rajma Chaat</a>
+        <a class="item" href="SOP_CF_LoadedNachos.html">Loaded Nachos</a>
+        <a class="item" href="SOP_CF_BiscoffCheesecake.html">Biscoff Cheesecake</a>
+        <a class="item" href="SOP_CF_BlueberryCheesecake.html">Blueberry Cheesecake</a>
+        <a class="item" href="SOP_CF_ChocChipCookie.html">Choc Chip Cookie</a>
+        <a class="item" href="SOP_CF_WarmBrownie.html">Warm Brownie</a>
+        <a class="item" href="SOP_CF_BunMaska.html">Bun Maska</a>
+        <a class="item" href="SOP_CF_Croissant.html">Butter Croissant</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</template>
+
+<script>
+(function () {
+  var host = document.getElementById('app');
+  var tpl  = document.getElementById('tpl').innerHTML;
+
+  function DCLogic() { this.state = null; }
+  DCLogic.prototype.setState = function (s) {
+    this.state = Object.assign({}, this.state, s);
+    render();
+  };
+
+class Component extends DCLogic {
+  componentDidMount() {
+    try { if (window.localStorage.getItem('fn_sop_lang') === 'hi') this.setState({ hi: true }); } catch (e) {}
+  }
+  renderVals() {
+    const hi = this.state ? !!this.state.hi : false;
+    const EN = {
+      title: 'Cafe', count: '90 SOPs · 12 groups',
+      g: ['Hot Coffee', 'Hot Chocolate', 'Cold & Manual Brew', 'Iced Latte / Cloud', 'Matcha', 'Frappe',
+          'Tea', 'Shakes & Coolers', 'Sandwich & Toast', 'Pizza', 'Pasta, Burger & Bread', 'Salad, Bakery & Dessert']
+    };
+    const HI = {
+      title: 'कैफे', count: '90 SOP · 12 ग्रुप',
+      g: ['गरम कॉफ़ी', 'हॉट चॉकलेट', 'कोल्ड & मैनुअल ब्रू', 'आइस्ड लाटे / क्लाउड', 'माचा', 'फ्रापे',
+          'चाय', 'शेक & कूलर', 'सैंडविच & टोस्ट', 'पिज़्ज़ा', 'पास्ता, बर्गर & ब्रेड', 'सलाद, बेकरी & डेज़र्ट']
+    };
+    const L = hi ? HI : EN;
+    return {
+      title: L.title, count: L.count,
+      g1: L.g[0], g2: L.g[1], g3: L.g[2], g4: L.g[3], g5: L.g[4], g6: L.g[5],
+      g7: L.g[6], g8: L.g[7], g9: L.g[8], g10: L.g[9], g11: L.g[10], g12: L.g[11],
+      langLabel: hi ? 'ENGLISH' : 'हिंदी',
+      flip: () => {
+        const next = !hi;
+        try { window.localStorage.setItem('fn_sop_lang', next ? 'hi' : 'en'); } catch (e) {}
+        this.setState({ hi: next });
+      }
+    };
+  }
+}
+
+  var c = new Component();
+
+  function esc(v) {
+    return String(v).replace(/[&<>"]/g, function (ch) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch];
+    });
+  }
+
+  function render() {
+    var vals = c.renderVals() || {};
+    host.innerHTML = tpl.replace(/\{\{\s*([A-Za-z0-9_]+)\s*\}\}/g, function (m, k) {
+      var v = vals[k];
+      if (typeof v === 'function' || v == null) return '';
+      return esc(v);
+    });
+    var nodes = host.querySelectorAll('[data-dc-click]');
+    for (var i = 0; i < nodes.length; i++) {
+      (function (el) {
+        var fn = vals[el.getAttribute('data-dc-click')];
+        if (typeof fn === 'function') el.addEventListener('click', fn);
+      })(nodes[i]);
+    }
+  }
+
+  if (typeof c.componentDidMount === 'function') c.componentDidMount();
+  render();
+})();
+</script>
+
+</body>
+</html>

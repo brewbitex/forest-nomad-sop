@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2F3C2C">
+<meta name="description" content="Forest Nomad kitchen SOPs — SOP · Espresso · Single / Double">
+<title>SOP · Espresso · Single / Double</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Noto+Sans+Devanagari:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+
+body{margin:0}a{color:#57534e}
+.wrap{height:100vh;box-sizing:border-box;overflow:hidden;background:#ffffff;padding:16px 22px 20px;display:flex;flex-direction:column;gap:13px;font-family:'Plus Jakarta Sans','Noto Sans Devanagari',system-ui,-apple-system,sans-serif;color:#1c1917}
+.topline{flex:0 0 auto;display:flex;align-items:center;gap:14px}
+.topline h1{margin:0;font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.back{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 16px;border-radius:999px;text-decoration:none;background:#1F4FA6;color:#ffffff;border:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 0 #143869,0 6px 9px rgba(28,25,23,.2);font-size:12px;font-weight:700;letter-spacing:.04em;transition:transform 90ms ease,box-shadow 90ms ease}
+.back:active{transform:translateY(4px);box-shadow:0 0 0 #143869,0 1px 2px rgba(28,25,23,.2)}
+.back:focus-visible{outline:2px solid #1c1917;outline-offset:3px}
+.lang{flex:0 0 auto;margin-left:auto;display:inline-flex;align-items:center;height:34px;padding:0 18px;border-radius:999px;cursor:pointer;border:none;font-family:inherit;background:var(--deep);color:var(--on,#fff);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 0 var(--edge),0 6px 9px rgba(28,25,23,.2);font-size:13px;font-weight:700;letter-spacing:.03em;transition:transform 90ms ease,box-shadow 90ms ease}
+.lang:active{transform:translateY(4px);box-shadow:inset 0 2px 3px rgba(0,0,0,.25),0 0 0 var(--edge)}
+.lang:focus-visible{outline:2px solid #1c1917;outline-offset:3px}
+.steps{flex:1;min-height:0;display:flex;flex-direction:column;gap:11px}
+.step{display:flex;align-items:flex-start;gap:15px;box-sizing:border-box;padding:13px 18px;border-radius:14px;background:linear-gradient(180deg,#fff 0%,var(--tint) 72%);border:1px solid var(--edge);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 4px 0 var(--edge),0 6px 10px rgba(28,25,23,.12)}
+.n{flex:0 0 auto;width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:var(--deep);color:var(--on,#fff);font-size:19px;font-weight:800;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 3px 0 rgba(0,0,0,.26)}
+.t{margin:0;padding-top:12px;font-size:17px;font-weight:500;line-height:1.34}
+@media (prefers-reduced-motion:reduce){.back,.lang{transition:none}.back:active,.lang:active{transform:none}}
+  
+
+    /* the artboards are drawn for a 1152x720 tablet in landscape; on anything
+       shorter or narrower let the page scroll instead of clipping its content */
+    @media (max-width: 900px), (max-height: 560px) {
+      html, body { overflow-y: auto; }
+      .wrap { height: auto; min-height: 100vh; overflow: visible; }
+      .cols { overflow: visible; }
+    }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+</style>
+</head>
+<body>
+<div id="app"></div>
+<template id="tpl">
+<div class="wrap" style="--tint:#FBE5E8;--edge:#EDA6AF;--deep:#C01B2E">
+  <div class="topline">
+    <a class="back" href="Cafe.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12H4m0 0 6-6m-6 6 6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>BACK</a>
+    <h1>Espresso · Single / Double</h1>
+    <button type="button" class="lang" data-dc-click="flip">{{ langLabel }}</button>
+  </div>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><p class="t">{{ s1 }}</p></div>
+    <div class="step"><span class="n">2</span><p class="t">{{ s2 }}</p></div>
+    <div class="step"><span class="n">3</span><p class="t">{{ s3 }}</p></div>
+    <div class="step"><span class="n">4</span><p class="t">{{ s4 }}</p></div>
+    <div class="step"><span class="n">5</span><p class="t">{{ s5 }}</p></div>
+  </div>
+</div>
+</template>
+
+<script>
+(function () {
+  var host = document.getElementById('app');
+  var tpl  = document.getElementById('tpl').innerHTML;
+
+  function DCLogic() { this.state = null; }
+  DCLogic.prototype.setState = function (s) {
+    this.state = Object.assign({}, this.state, s);
+    render();
+  };
+
+class Component extends DCLogic {
+  componentDidMount() {
+    try { if (localStorage.getItem('fn_sop_lang') === 'hi') this.setState({ hi: true }); } catch (e) {}
+  }
+  renderVals() {
+    const hi = this.state ? !!this.state.hi : false;
+    const EN = [
+      'Single 9 g in / 18 g out. Double 18 g in / 36 g out.',
+      'Target 25-30 sec extraction at 93C and 9 bar.',
+      'Purge the group head and wipe the basket before every shot.',
+      'Check the crema: hazelnut colour, 2-3 mm. Pale and fast means grind finer; dark and slow means coarser.',
+      'Serve in a warmed demitasse with sparkling water alongside. Dial in at open and after every bean change. Ticket 1 min.'
+    ];
+    const HI = [
+      'Single 9 g in / 18 g out। Double 18 g in / 36 g out।',
+      '93C और 9 bar पर 25-30 second extraction का target।',
+      'हर shot से पहले group head purge करें और basket पोंछें।',
+      'Crema देखें: hazelnut रंग, 2-3 mm। हल्का और तेज़ निकले तो grind बारीक करें; गहरा और धीमा निकले तो मोटा।',
+      'गरम demitasse में sparkling water के साथ दें। Open पर और हर bean बदलने के बाद dial in करें। Ticket 1 min।'
+    ];
+    const L = hi ? HI : EN;
+    const out = {
+      langLabel: hi ? 'ENGLISH' : 'हिंदी',
+      flip: () => {
+        const next = !hi;
+        try { localStorage.setItem('fn_sop_lang', next ? 'hi' : 'en'); } catch (e) {}
+        this.setState({ hi: next });
+      }
+    };
+    L.forEach((s, i) => { out['s' + (i + 1)] = s; });
+    return out;
+  }
+}
+
+  var c = new Component();
+
+  function esc(v) {
+    return String(v).replace(/[&<>"]/g, function (ch) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch];
+    });
+  }
+
+  function render() {
+    var vals = c.renderVals() || {};
+    host.innerHTML = tpl.replace(/\{\{\s*([A-Za-z0-9_]+)\s*\}\}/g, function (m, k) {
+      var v = vals[k];
+      if (typeof v === 'function' || v == null) return '';
+      return esc(v);
+    });
+    var nodes = host.querySelectorAll('[data-dc-click]');
+    for (var i = 0; i < nodes.length; i++) {
+      (function (el) {
+        var fn = vals[el.getAttribute('data-dc-click')];
+        if (typeof fn === 'function') el.addEventListener('click', fn);
+      })(nodes[i]);
+    }
+  }
+
+  if (typeof c.componentDidMount === 'function') c.componentDidMount();
+  render();
+})();
+</script>
+
+</body>
+</html>
