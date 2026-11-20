@@ -1,0 +1,3 @@
+# Internal kitchen SOPs. Reachable by link, but not meant to be indexed.
+User-agent: *
+Disallow: /
